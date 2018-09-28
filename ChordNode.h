@@ -14,7 +14,12 @@ public:
 
   // Chord methods
   ChordNode* lookup(int id) const;
+  ChordNode* find_sucessor(int id) const;
+  int next = 0;
   void fix_fingers();
+
+  // Helpers methods
+  int n_in_inter(int n, int a, int strict_a, int b, int strict_b) const;
 
   // Getters
   int get_id() const;
