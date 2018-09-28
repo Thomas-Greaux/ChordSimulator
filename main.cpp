@@ -52,13 +52,23 @@ int main()
   N56.set_predecessor(&N51);
   N56.set_successor(&N1);
 
-  cout << "N1 lookup 51 : " << endl << N1.lookup(51) << endl;
+  cout << "N1 lookup 51 : " << endl;
+  N1.lookup(51);
   /*
   cout << "N32 lookup 51 : " << N32.lookup(51) << endl << endl;
 
   cout << "N1 lookup 49 : " << N32.lookup(49) << endl;
   cout << "N1 lookup 50 : " << N1.lookup(50) << endl;
   */
+
+  N8.print_fingers();
+
+  for(int i = 0; i<6; i++)
+  {
+    N8.fix_fingers();
+  }
+
+  N8.print_fingers();
 
   return 0;
 }

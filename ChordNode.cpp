@@ -11,7 +11,7 @@ ChordNode::ChordNode(int id): id(id)
   successor = this;
 }
 
-int ChordNode::lookup(int id) const
+ChordNode* ChordNode::lookup(int id) const
 {
   #if TRACE == 1
   cout << "id in (" << this->id << ", " << successor->get_id() << "] ?";
@@ -23,13 +23,21 @@ int ChordNode::lookup(int id) const
     cout << " yes" << endl;
     #endif
 
-    return successor->get_id();
+    return successor;
   }
   #if TRACE == 1
   cout << " no" << endl;
   #endif
 
   return successor->lookup(id);
+}
+
+void ChordNode::fix_fingers()
+{
+  static int next = 0;
+  next++;
+  next %= 6;
+  set_finger(lookup(id + (1 << (next))), next);
 }
 
 int ChordNode::get_id() const
@@ -51,4 +59,13 @@ void ChordNode::set_finger(ChordNode* const finger_i, int i)
 {
   if(i > 5) assert(0);
   this->finger[i] = finger_i;
+}
+
+void ChordNode::print_fingers() const
+{
+  for(int i = 0; i<6; i++)
+  {
+    if(finger[i] != nullptr) cout << "finger[" << i << "]: " << finger[i]->get_id() << endl;
+  }
+  cout << endl;
 }
