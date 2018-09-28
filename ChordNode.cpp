@@ -2,7 +2,7 @@
 
 #include <iostream>
 #include <cassert>
-#include "config.h"
+#include "Config.h"
 
 using namespace std;
 
@@ -28,7 +28,7 @@ int ChordNode::lookup(int id) const
   #if TRACE == 1
   cout << " no" << endl;
   #endif
-  
+
   return successor->lookup(id);
 }
 

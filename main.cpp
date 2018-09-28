@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "config.h"
+#include "Config.h"
 #include "ChordNode.h"
 
 using namespace std;
