@@ -13,8 +13,12 @@ public:
   ChordNode(int id);
 
   // Chord methods
+  void join(ChordNode* known_node);
+  void stabilize();
+  void notify(ChordNode* x);
+  void check_predecessor();
   ChordNode* lookup(int id) const;
-  ChordNode* find_sucessor(int id) const;
+  ChordNode* find_successor(int id);
   int next = 0;
   void fix_fingers();
 
@@ -23,6 +27,8 @@ public:
 
   // Getters
   int get_id() const;
+  ChordNode* get_predecessor() const;
+  ChordNode* get_successor() const;
 
   // Setters
   void set_successor(ChordNode* const successor);
